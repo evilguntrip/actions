@@ -9,12 +9,15 @@ jobs:
     permissions:
       issues: write
     steps:
+      - name: Generate random index
+        run: echo "random_number=$(($RANDOM % 2))" >> $GITHUB_OUTPUT
       - name: Add comment
-        run: gh issue comment "$NUMBER" --body "$BODY"
+        run: gh issue comment "$NUMBER" --body "$BODY[1]"
         env:
           GH_TOKEN: ${{ secrets.PAT }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
+          GREETINGS: '["Hello to you too!", ":sparkles: :sparkles: :sparkles:", "Hello world! :earth_africa:"]'
           BODY: >
             Hello to you too!
-            :sparkles:
+            
