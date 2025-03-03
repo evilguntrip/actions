@@ -6,16 +6,11 @@ jobs:
   add-comment:
     if: github.event.issue.body == 'Hello'
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
     steps:
-      - name: Generate random index
-        run: echo "random_number=$(($RANDOM % 2))" >> $GITHUB_OUTPUT
       - name: Add comment
-        run: gh issue comment "$NUMBER" --body "$GREETINGS[1]"
+        run: gh issue comment "$NUMBER" --body "$GREETING"
         env:
           GH_TOKEN: ${{ secrets.PAT }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
-          GREETINGS: ("Hello to you too!", ":sparkles::sparkles::sparkles:", "Hello world! :earth_africa:")
-            
+          GREETINGS: "Hello to you too! :sparkles::sparkles::sparkles:"
