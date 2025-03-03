@@ -13,4 +13,4 @@ jobs:
           GH_TOKEN: ${{ secrets.PAT }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
-          GREETINGS: "Hello to you too! :sparkles::sparkles::sparkles:"
+          GREETING: "Hello to you too! :sparkles::sparkles::sparkles:"
